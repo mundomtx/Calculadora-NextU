@@ -161,6 +161,8 @@ var Calculadora = {
 			}
 		}
 
+		//Prueba
+
 		if(valorDisplay!=''){
 			sessionStorage.valorGuardado = Number(valorDisplay);
 		}
