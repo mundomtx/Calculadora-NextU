@@ -9,9 +9,13 @@ var Calculadora = {
 		var classname = document.getElementsByClassName("tecla");
 
 		for (var i = 0; i < classname.length; i++){
-    		classname[i].addEventListener('click', function() {
-			  self.disminucion(i)
-			})
+    		classname[i].addEventListener("mousedown", function(){
+				this.style.padding = '3px'
+			});
+
+			classname[i].addEventListener("mouseup", function(){
+				this.style.padding = '0px'
+			});
 		}
 
 		document.getElementById('0').addEventListener('click', function() {
@@ -86,9 +90,6 @@ var Calculadora = {
 		  self.operacionIgual()
 		})
 	},
-	disminucion: function(){
-		
-	},
 	validarNumeroDigitos: function(valor){
 		var valor = String(valor);
 		return valor.substring(0, 8)
@@ -119,7 +120,7 @@ var Calculadora = {
 		sessionStorage.ultimoResultado = 0
 		sessionStorage.operacionActiva = 0
 		sessionStorage.valorGuardado = 0
-		sessionStorage.countOperadorIgual =0
+		sessionStorage.countOperadorIgual = 0
 	},
 	anadirPunto: function(){
 		var self = this
@@ -160,8 +161,6 @@ var Calculadora = {
 				sessionStorage.valor = Number(valorDisplay);
 			}
 		}
-
-		//Prueba
 
 		if(valorDisplay!=''){
 			sessionStorage.valorGuardado = Number(valorDisplay);
@@ -207,6 +206,8 @@ var Calculadora = {
 			case '4':
 				var resultado = (Number(valor1)/Number(valor2))
 				break;
+			default:
+				var resultado = Number(valor2);
 		} 
 
 		resultadoValidado = self.validarNumeroDigitos(resultado);
